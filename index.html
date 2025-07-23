@@ -304,7 +304,77 @@
       <h2>A nossa próxima aventura 🚗🌍</h2>
       <p>
         Preparei algo muito especial para nós...<br>
-        Um momento só nosso, longe de tudo, para celebrar os 3 anos mais
+        Um momento só nosso, longe de tudo, para celebrar os 3 anos mais felizes da minha vida contigo.  
+        Mal posso esperar para partilhar cada segundo desta viagem.
+      </p>
+
+      <div class="map-line">
+        <span class="city city-left">Porto</span>
+        <span class="car">🚗</span>
+        <span class="city city-right">Madrid</span>
+      </div>
+
+      <iframe 
+        class="map-iframe" 
+        src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d322393.1059189854!2d-8.835869180560106!3d41.14945110840824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0xd2464d94e8e2eab%3A0xf9e9f7bc79d08a14!2sPorto%2C%20Portugal!3m2!1d41.1494511!2d-8.6107884!4m5!1s0xd42284e0a59b281%3A0x9cdac87d6500f41f!2sMadrid%2C%20Espanha!3m2!1d40.4167754!2d-3.7037902!5e0!3m2!1spt-PT!2spt!4v1686877722159!5m2!1spt-PT!2spt" 
+        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <audio id="audio" src="audio/pluto-projector.mp3" preload="auto"></audio>
+
+  <script>
+    const audio = document.getElementById('audio');
+    const musicBtn = document.getElementById('musicBtn');
+    audio.volume = 0.2; // Volume mais baixo, 20%
+
+    musicBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        musicBtn.textContent = "Pausar Música";
+      } else {
+        audio.pause();
+        musicBtn.textContent = "Tocar Música";
+      }
+    });
+
+    // Slideshow simples
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlides() {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+      });
+      slideIndex++;
+      if (slideIndex > slides.length) slideIndex = 1;
+      slides[slideIndex - 1].classList.add('active');
+      setTimeout(showSlides, 4000);
+    }
+
+    showSlides();
+
+    // Contador de dias juntos
+    function calculateDaysTogether() {
+      const startDate = new Date(2020, 7, 20); // 20 Agosto 2020
+      const now = new Date();
+      const diffTime = Math.abs(now - startDate);
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      document.getElementById('daysTogether').textContent = `Estamos juntos há ${diffDays} dias.`;
+    }
+    calculateDaysTogether();
+
+    // Mostrar surpresa (gift) depois do clique
+    function revealGift() {
+      const giftContent = document.getElementById('giftContent');
+      giftContent.classList.add('visible');
+      document.getElementById('revealGift').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
+
 
 
 
