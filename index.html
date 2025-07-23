@@ -25,6 +25,25 @@
       position: relative;
     }
 
+    #musicBtn {
+      position: relative;
+      margin: 10px auto 20px;
+      display: block;
+      padding: 10px 20px;
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    #musicBtn:hover {
+      background-color: #c2185b;
+    }
+
     .slideshow-container {
       max-width: 100%;
       height: 500px;
@@ -37,7 +56,6 @@
       align-items: center;
       overflow: hidden;
       border-radius: 20px;
-      flex-direction: column;
     }
 
     .slide {
@@ -233,31 +251,12 @@
       100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
     }
 
-    /* Botão quadrado simples para a música */
-    #musicBtn {
-      margin-top: 15px;
-      padding: 10px 15px;
-      font-size: 1em;
-      background-color: #e91e63;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-      transition: background-color 0.3s ease;
-      align-self: flex-start; /* fica ao lado esquerdo */
-    }
-
-    #musicBtn:hover {
-      background-color: #c2185b;
-    }
-
     @media (max-width: 600px) {
       h1, h2 { font-size: 1.8em; }
       p { font-size: 1.1em; }
       .car { font-size: 1.5em; }
       .penguin { width: 40px; bottom: 8px; }
-      #musicBtn { font-size: 0.9em; padding: 8px 12px; }
+      #musicBtn { font-size: 0.9em; padding: 8px 16px; }
     }
   </style>
 </head>
@@ -267,8 +266,9 @@
     Os 3 anos mais felizes da minha vida!!! ❤️🥰💫🎉
   </header>
 
+  <button id="musicBtn">Tocar Música 🎵</button>
+
   <div class="slideshow-container">
-    <button id="musicBtn">Tocar Música</button>
     <img class="slide active" src="https://i.imgur.com/20JkHrD.png" alt="Foto 1">
     <img class="slide" src="https://i.imgur.com/uPhIP3q.jpeg" alt="Foto 2">
     <img class="slide" src="https://i.imgur.com/osVI4yw.jpeg" alt="Foto 3">
@@ -276,12 +276,8 @@
     <img class="slide" src="https://imgur.com/MuoTzFc.jpeg" alt="Foto 5">
     <img class="slide" src="https://imgur.com/P88BYyE.jpeg" alt="Foto 6">  
 
-    <img
-      src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjVzYnAxNWE4bngwdGQ5c3I4MHkwMDFreTN0d3FzcDBxMDBodHN0MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tJJ7L31VvDa9PKjyT6/giphy.gif" 
-      class="penguin penguin-left" alt="Pinguim">
-    <img 
-      src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDFsOXk4MjJtendqeGdtazZwd2FwdnZ5MmFzbWQ5NjZ1aDE3ZWJtayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Qgvns02mLDqyWfUPXH/giphy.gif" 
-      class="penguin penguin-right" alt="Pinguim">
+    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjVzYnAxNWE4bngwdGQ5c3I4MHkwMDFreTN0d3FzcDBxMDBodHN0MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tJJ7L31VvDa9PKjyT6/giphy.gif" class="penguin penguin-left" alt="Pinguim">
+    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDFsOXk4MjJtendqeGdtazZwd2FwdnZ5MmFzbWQ5NjZ1aDE3ZWJtayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Qgvns02mLDqyWfUPXH/giphy.gif" class="penguin penguin-right" alt="Pinguim">
   </div>
 
   <div class="container">
@@ -304,77 +300,81 @@
       <h2>A nossa próxima aventura 🚗🌍</h2>
       <p>
         Preparei algo muito especial para nós...<br>
-        Um momento só nosso, longe de tudo, para celebrar os 3 anos mais felizes da minha vida contigo.  
-        Mal posso esperar para partilhar cada segundo desta viagem.
+        Um momento só nosso, longe de tudo, para celebrar os 3 anos mais incríveis da minha vida!<br><br>
+        ❤️ Estamos prestes a embarcar numa <strong>viagem surpresa</strong> onde cada passo será vivido com amor, alegria e novas memórias a dois.
       </p>
 
+      <h2>De Lisboa até ao Porto... com amor 🚗💞</h2>
       <div class="map-line">
-        <span class="city city-left">Porto</span>
-        <span class="car">🚗</span>
-        <span class="city city-right">Madrid</span>
+        <span class="city city-left">Lisboa</span>
+        <div class="car">🚗</div>
+        <span class="city city-right">Porto</span>
       </div>
 
-      <iframe 
-        class="map-iframe" 
-        src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d322393.1059189854!2d-8.835869180560106!3d41.14945110840824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0xd2464d94e8e2eab%3A0xf9e9f7bc79d08a14!2sPorto%2C%20Portugal!3m2!1d41.1494511!2d-8.6107884!4m5!1s0xd42284e0a59b281%3A0x9cdac87d6500f41f!2sMadrid%2C%20Espanha!3m2!1d40.4167754!2d-3.7037902!5e0!3m2!1spt-PT!2spt!4v1686877722159!5m2!1spt-PT!2spt" 
-        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="map-iframe">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d629617.9392801048!2d-9.364709293215548!3d39.77643511010466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0xd19331cbf39f3f9%3A0x400ebbde49036d0!2sLisboa!3m2!1d38.7169!2d-9.1399!4m5!1s0xd2465c6a5d6516f%3A0x400ebbde4904d80!2sPorto!3m2!1d41.1579!2d-8.6291!5e0!3m2!1spt-PT!2spt!4v1721244449876!5m2!1spt-PT!2spt"
+          width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
     </div>
   </section>
 
-  <audio id="audio" src="audio/pluto-projector.mp3" preload="auto"></audio>
+  <audio id="bgMusic" src="audio/pluto-projector.mp3" preload="auto"></audio>
 
   <script>
-    const audio = document.getElementById('audio');
-    const musicBtn = document.getElementById('musicBtn');
-    audio.volume = 0.2; // Volume mais baixo, 20%
+    const startDate = new Date("2022-08-02");
+    const today = new Date();
+    const diffTime = today - startDate;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    document.getElementById("daysTogether").textContent = `Estamos juntos há ${diffDays} dias 💖`;
 
-    musicBtn.addEventListener('click', () => {
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName("slide");
+    function showSlides() {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active");
+      }
+      slideIndex = (slideIndex + 1) % slides.length;
+      slides[slideIndex].classList.add("active");
+      setTimeout(showSlides, 3000);
+    }
+    setTimeout(showSlides, 3000);
+
+    function revealGift() {
+      document.getElementById("giftContent").classList.add("visible");
+      document.getElementById("revealGift").style.display = "none";
+    }
+
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = '100vh';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }, 800);
+
+    const musicBtn = document.getElementById("musicBtn");
+    const audio = document.getElementById("bgMusic");
+    audio.volume = 0.3;
+
+    musicBtn.addEventListener("click", () => {
       if (audio.paused) {
-        audio.play();
-        musicBtn.textContent = "Pausar Música";
+        audio.play().then(() => {
+          musicBtn.textContent = "Pausar Música ⏸️";
+        }).catch(err => {
+          alert("Erro ao tocar música: " + err.message);
+        });
       } else {
         audio.pause();
-        musicBtn.textContent = "Tocar Música";
+        musicBtn.textContent = "Tocar Música 🎵";
       }
     });
-
-    // Slideshow simples
-    let slideIndex = 0;
-    const slides = document.querySelectorAll('.slide');
-
-    function showSlides() {
-      slides.forEach((slide, i) => {
-        slide.classList.remove('active');
-      });
-      slideIndex++;
-      if (slideIndex > slides.length) slideIndex = 1;
-      slides[slideIndex - 1].classList.add('active');
-      setTimeout(showSlides, 4000);
-    }
-
-    showSlides();
-
-    // Contador de dias juntos
-    function calculateDaysTogether() {
-      const startDate = new Date(2020, 7, 20); // 20 Agosto 2020
-      const now = new Date();
-      const diffTime = Math.abs(now - startDate);
-      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-      document.getElementById('daysTogether').textContent = `Estamos juntos há ${diffDays} dias.`;
-    }
-    calculateDaysTogether();
-
-    // Mostrar surpresa (gift) depois do clique
-    function revealGift() {
-      const giftContent = document.getElementById('giftContent');
-      giftContent.classList.add('visible');
-      document.getElementById('revealGift').style.display = 'none';
-    }
   </script>
-
 </body>
 </html>
-
-
 
 
