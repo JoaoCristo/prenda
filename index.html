@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love You Momo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+      text-align: center;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #f8bbd0;
+      color: #880e4f;
+      padding: 40px 20px 20px;
+      font-size: 2.5em;
+      font-weight: bold;
+      border-bottom: 3px solid #ec407a;
+      text-shadow: 1px 1px 3px #fff;
+      position: relative;
+    }
+
+    #playMusic {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #fff;
+      border: 2px solid #880e4f;
+      color: #880e4f;
+      font-size: 1em;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    #playMusic:hover {
+      background-color: #fce4ec;
+    }
+
+    .slideshow-container {
+      max-width: 100%;
+      height: 500px;
+      margin: 0 auto;
+      position: relative;
+      background-color: #fce4ec;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    .slide {
+      position: absolute;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+      position: relative;
+    }
+
+    .penguin {
+      position: absolute;
+      bottom: 20px;
+      width: 60px;
+      animation: dance 1.4s ease-in-out infinite alternate;
+      z-index: 2;
+    }
+
+    .penguin-left {
+      left: 15px;
+    }
+
+    .penguin-right {
+      right: 15px;
+      transform: scaleX(-1);
+    }
+
+    @keyframes dance {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-10px) scale(1.05); }
+    }
+
+    .container {
+      padding: 30px 20px;
+    }
+
+    h1 {
+      color: #e91e63;
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.4em;
+      margin: 20px auto;
+      max-width: 700px;
+      line-height: 1.6em;
+    }
+
+    .counter {
+      font-size: 1.3em;
+      margin-top: 25px;
+      color: #880e4f;
+      font-weight: bold;
+    }
+
+    .divider {
+      width: 100%;
+      height: 60px;
+      background: linear-gradient(to right, #f8bbd0, #fce4ec);
+      clip-path: polygon(0 0, 100% 100%, 0 100%);
+    }
+
+    .gift-section {
+      background-color: #fce4ec;
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+    .gift-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gift-section h2 {
+      font-size: 2.4em;
+      color: #e91e63;
+      margin-bottom: 20px;
+      text-shadow: 0 0 4px #fff;
+    }
+
+    .gift-section p {
+      font-size: 1.3em;
+      color: #6a1b9a;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      line-height: 1.6em;
+    }
+
+    .map-line {
+      position: relative;
+      width: 90%;
+      max-width: 800px;
+      height: 80px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .map-line::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #d81b60;
+      border-top: 4px dashed #d81b60;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    .car {
+      position: absolute;
+      top: 50%;
+      left: -50px;
+      font-size: 2em;
+      transform: translateY(-50%) scaleX(-1);
+      z-index: 2;
+      animation: driveForward 6s linear infinite;
+    }
+
+    @keyframes driveForward {
+      0% { left: -50px; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { left: 100%; opacity: 0; }
+    }
+
+    .city {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #880e4f;
+      z-index: 3;
+    }
+
+    .city-left {
+      align-self: flex-start;
+    }
+
+    .city-right {
+      align-self: flex-end;
+      margin-top: 40px;
+    }
+
+    #revealGift {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 1.2em;
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: background 0.3s ease;
+    }
+
+    #revealGift:hover {
+      background-color: #c2185b;
+    }
+
+    .map-iframe {
+      margin-top: 50px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+
+    .heart {
+      position: fixed;
+      color: #e91e63;
+      animation: floatUp 4s linear infinite;
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
+    }
+
+    @media (max-width: 600px) {
+      h1, h2 { font-size: 1.8em; }
+      p { font-size: 1.1em; }
+      .car { font-size: 1.5em; }
+      .penguin { width: 40px; bottom: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    Os 3 anos mais felizes da minha vida!!! ❤️🥰💫🎉
+    <button id="playMusic">Tocar música</button>
+  </header>
+
+  <div class="slideshow-container">
+    <img class="slide active" src="https://i.imgur.com/20JkHrD.png" alt="Foto 1">
+    <img class="slide" src="https://i.imgur.com/uPhIP3q.jpeg" alt="Foto 2">
+    <img class="slide" src="https://i.imgur.com/osVI4yw.jpeg" alt="Foto 3">
+    <img class="slide" src="https://imgur.com/V9TDwHJ.jpeg" alt="Foto 4"> 
+    <img class="slide" src="https://imgur.com/MuoTzFc.jpeg" alt="Foto 5">
+    <img class="slide" src="https://imgur.com/P88BYyE.jpeg" alt="Foto 6">  
+
+    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjVzYnAxNWE4bngwdGQ5c3I4MHkwMDFreTN0d3FzcDBxMDBodHN0MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tJJ7L31VvDa9PKjyT6/giphy.gif" class="penguin penguin-left" alt="Pinguim">
+    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDFsOXk4MjJtendqeGdtazZwd2FwdnZ5MmFzbWQ5NjZ1aDE3ZWJtayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Qgvns02mLDqyWfUPXH/giphy.gif" class="penguin penguin-right" alt="Pinguim">
+  </div>
+
+  <div class="container">
+    <h1>Momo, amo-te</h1>
+    <p>
+      Desde o dia em que entraste na minha vida, tudo ganhou mais cor, mais sentido e mais amor.  
+      O teu sorriso ilumina os meus dias, a tua presença acalma o meu coração, e o teu amor é o melhor presente que alguma vez recebi.  
+      Cada momento ao teu lado é uma memória que guardo com carinho, e cada dia contigo é uma bênção.  
+      Amo-te mais do que palavras conseguem expressar, Momo.  
+      Obrigado por seres tu. Por seres minha.
+    </p>
+    <div class="counter" id="daysTogether"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section>
+    <button id="revealGift" onclick="revealGift()">Clica para ver a surpresa 🎁</button>
+    <div id="giftContent" class="gift-section">
+      <h2>A nossa próxima aventura 🚗🌍</h2>
+      <p>
+        Preparei algo muito especial para nós...<br>
+        Um momento só nosso, longe de tudo, para celebrar os 3 anos mais incríveis da minha vida!<br><br>
+        ❤️ Estamos prestes a embarcar numa <strong>viagem surpresa</strong> onde cada passo será vivido com amor, alegria e novas memórias a dois.
+      </p>
+
+      <h2>De Lisboa até ao Porto... com amor 🚗💞</h2>
+      <div class="map-line">
+        <span class="city city-left">Lisboa</span>
+        <div class="car">🚗</div>
+        <span class="city city-right">Porto</span>
+      </div>
+
+      <div class="map-iframe">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d629617.9392801048!2d-9.364709293215548!3d39.77643511010466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0xd19331cbf39f3f9%3A0x400ebbde49036d0!2sLisboa!3m2!1d38.7169!2d-9.1399!4m5!1s0xd2465c6a5d6516f%3A0x400ebbde4904d80!2sPorto!3m2!1d41.1579!2d-8.6291!5e0!3m2!1spt-PT!2spt!4v1721244449876!5m2!1spt-PT!2spt"
+          width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <audio id="momoAudio" src="audio/pluto-projector.mp3" preload="auto"></audio>
+
+  <script>
+    const startDate = new Date("2022-08-02");
+    const today = new Date();
+    const diffTime = today - startDate;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    document.getElementById("daysTogether").textContent =
+      `Estamos juntos há ${diffDays} dias 💖`;
+
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName("slide");
+    function showSlides() {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active");
+      }
+      slideIndex = (slideIndex + 1) % slides.length;
+      slides[slideIndex].classList.add("active");
+      setTimeout(showSlides, 3000);
+    }
+    setTimeout(showSlides, 3000);
+
+    function revealGift() {
+      document.getElementById("giftContent").classList.add("visible");
+      document.getElementById("revealGift").style.display = "none";
+    }
+
+    const momoAudio = document.getElementById("momoAudio");
+    const playBtn = document.getElementById("playMusic");
+
+    playBtn.addEventListener("click", () => {
+      momoAudio.play();
+    });
+
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = '100vh';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }, 800);
+  </script>
+</body>
+</html>
+
+
+
+
