@@ -258,6 +258,55 @@
       .penguin { width: 40px; bottom: 8px; }
       #musicBtn { font-size: 0.9em; padding: 8px 16px; }
     }
+.arouca-slideshow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.arouca-slide-container {
+  position: relative;
+  max-width: 90%;
+  width: 500px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.arouca-slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.arouca-slide.active {
+  display: block;
+}
+
+.arouca-slideshow .prev,
+.arouca-slideshow .next {
+  background-color: #e91e63;
+  border: none;
+  color: white;
+  font-size: 1.8em;
+  padding: 8px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+}
+
+.arouca-slideshow .prev:hover,
+.arouca-slideshow .next:hover {
+  background-color: #c2185b;
+}
+
   </style>
 </head>
 <body>
@@ -304,22 +353,46 @@
         ❤️ Estamos prestes a embarcar numa <strong>viagem surpresa</strong> onde cada passo será vivido com amor, alegria e novas memórias a dois.
       </p>
 
-      <h2>De Lisboa até ao Porto... com amor 🚗💞</h2>
+      <h2>De Lisboa até Arouca... com amor 🚗💞</h2>
       <div class="map-line">
         <span class="city city-left">Lisboa</span>
         <div class="car">🚗</div>
-        <span class="city city-right">Porto</span>
+        <span class="city city-right">Arouca</span>
       </div>
 
       <div class="map-iframe">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d629617.9392801048!2d-9.364709293215548!3d39.77643511010466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0xd19331cbf39f3f9%3A0x400ebbde49036d0!2sLisboa!3m2!1d38.7169!2d-9.1399!4m5!1s0xd2465c6a5d6516f%3A0x400ebbde4904d80!2sPorto!3m2!1d41.1579!2d-8.6291!5e0!3m2!1spt-PT!2spt!4v1721244449876!5m2!1spt-PT!2spt"
-          width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
+          src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d1218091.2030812527!2d-9.210134743740196!3d39.69582024186195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0xd19331cbf39f3f9%3A0x400ebbde49036d0!2sLisboa!3m2!1d38.7169!2d-9.1399!4m5!1s0xd24f563d158c229%3A0x66a6fc6a89df87a7!2sArouca!3m2!1d40.9277!2d-8.2491!5e0!3m2!1spt-PT!2spt!4v1721741311600!5m2!1spt-PT!2spt"
+    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
     </div>
   </section>
+
+<section class="arouca-plan">
+  <h2>O que vamos fazer em Arouca 🌄</h2>
+  <p>
+    Preparei um plano especial para nós em Arouca, cheio de natureza, emoção e muito amor. Cada momento será único!
+  </p>
+  <ul>
+    <li>🌉 Caminhar de mãos dadas nos Passadiços do Paiva</li>
+    <li>⛰️ Atravessar a ponte suspensa 516 Arouca (se o coração aguentar!)</li>
+    <li>🍃 Piquenique com vista para as montanhas</li>
+    <li>🛏️ Descansar num alojamento romântico em plena natureza</li>
+  </ul>
+
+  <div class="arouca-slideshow">
+    <button class="prev" onclick="plusAroucaSlides(-1)">⟵</button>
+    <div class="arouca-slide-container">
+      <img class="arouca-slide" src="https://imgur.com/dW8RGIW.jpeg" alt="Passadiços do Paiva">
+      <img class="arouca-slide" src="https://imgur.com/HL0UPsI.jpeg" alt="Ponte 516 Arouca">
+      <img class="arouca-slide" src="https://imgur.com/1lErwst.jpeg" alt="Cidade de Arouca">
+    </div>
+    <button class="next" onclick="plusAroucaSlides(1)">⟶</button>
+  </div>
+</section>
+
 
   <audio id="bgMusic" src="audio/Daisies.mp3" preload="auto"></audio>
 
@@ -373,6 +446,25 @@
         musicBtn.textContent = "Tocar Música 🎵";
       }
     });
+
+// Slideshow manual para secção de Arouca
+let aroucaIndex = 0;
+const aroucaSlides = document.querySelectorAll('.arouca-slide');
+
+function showAroucaSlide(n) {
+  aroucaSlides.forEach(slide => slide.classList.remove('active'));
+  aroucaSlides[n].classList.add('active');
+}
+
+function plusAroucaSlides(n) {
+  aroucaIndex = (aroucaIndex + n + aroucaSlides.length) % aroucaSlides.length;
+  showAroucaSlide(aroucaIndex);
+}
+
+showAroucaSlide(aroucaIndex);
+
+
+
   </script>
 </body>
 </html>
