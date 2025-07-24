@@ -312,7 +312,7 @@
 <body>
 
   <header>
-    Os 3 anos mais felizes da minha vida!!! ❤️🥰💫🎉
+    Os 3 anos mais felizes da minha vida!!!❤️🥰💫🎉
   </header>
 
   <button id="musicBtn"> Música 🎵</button>
@@ -370,16 +370,19 @@
     </div>
   </section>
 
-<section class="arouca-plan">
+<section id="aroucaSection" class="gift-section">
   <h2>O que vamos fazer em Arouca 🌄</h2>
   <p>
     Preparei um plano especial para nós em Arouca, cheio de natureza, emoção e muito amor. Cada momento será único!
   </p>
-  <ul>
-    <li>🌉 Caminhar de mãos dadas nos Passadiços do Paiva</li>
+  <ul style="list-style: none; padding-left: 0;">
+    <li>Caminhar de mãos dadas nos Passadiços do Paiva🌉</li>
     <li>⛰️ Atravessar a ponte suspensa 516 Arouca (se o coração aguentar!)</li>
-    <li>🍃 Piquenique com vista para as montanhas</li>
+    <li>Piquenique com vista para as montanhas🍃</li>
     <li>🛏️ Descansar num alojamento romântico em plena natureza</li>
+<li>
+  Apanhar Pokemons <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Pikachu" style="width: 30px; vertical-align: middle; margin-right: 8px;">
+</li>
   </ul>
 
   <div class="arouca-slideshow">
@@ -388,6 +391,7 @@
       <img class="arouca-slide" src="https://imgur.com/dW8RGIW.jpeg" alt="Passadiços do Paiva">
       <img class="arouca-slide" src="https://imgur.com/HL0UPsI.jpeg" alt="Ponte 516 Arouca">
       <img class="arouca-slide" src="https://imgur.com/1lErwst.jpeg" alt="Cidade de Arouca">
+      <img class="arouca-slide" src="https://imgur.com/bYrwzy9.jpeg" alt="Cidade de Arouca">
     </div>
     <button class="next" onclick="plusAroucaSlides(1)">⟶</button>
   </div>
@@ -415,10 +419,11 @@
     }
     setTimeout(showSlides, 3000);
 
-    function revealGift() {
-      document.getElementById("giftContent").classList.add("visible");
-      document.getElementById("revealGift").style.display = "none";
-    }
+  function revealGift() {
+  document.getElementById("giftContent").classList.add("visible");
+  document.getElementById("revealGift").style.display = "none";
+  document.getElementById("aroucaSection").classList.add("visible");
+}
 
     setInterval(() => {
       const heart = document.createElement('div');
@@ -468,5 +473,3 @@ showAroucaSlide(aroucaIndex);
   </script>
 </body>
 </html>
-
-
