@@ -66,7 +66,7 @@
       border-radius: 20px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 1.5s ease-in-out;
     }
 
     .slide.active {
@@ -261,27 +261,24 @@
 .arouca-slideshow {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 30px;
-  gap: 10px;
-  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .arouca-slide-container {
   position: relative;
-  max-width: 90%;
+  max-width: 90vw;
   width: 500px;
-  height: 300px;
+  height: 300px; /* Altura fixa */
   overflow: hidden;
   border-radius: 16px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .arouca-slide {
-  display: none;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  display: none;
+  object-fit: cover; /* Redimensiona sem distorcer */
   border-radius: 16px;
 }
 
@@ -289,22 +286,41 @@
   display: block;
 }
 
-.arouca-slideshow .prev,
-.arouca-slideshow .next {
-  background-color: #e91e63;
+.arouca-slide-container .prev,
+.arouca-slide-container .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(233, 30, 99, 0.9);
   border: none;
   color: white;
   font-size: 1.8em;
-  padding: 8px 16px;
-  border-radius: 12px;
+  padding: 10px;
+  border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 10;
   transition: background-color 0.3s ease;
 }
 
-.arouca-slideshow .prev:hover,
-.arouca-slideshow .next:hover {
-  background-color: #c2185b;
+.arouca-slide-container .prev {
+  left: 10px;
+}
+
+.arouca-slide-container .next {
+  right: 10px;
+}
+
+.arouca-slide-container .prev:hover,
+.arouca-slide-container .next:hover {
+  background-color: rgba(194, 24, 91, 1);
+}
+
+@media (max-width: 600px) {
+  .arouca-slide-container .prev,
+  .arouca-slide-container .next {
+    font-size: 1.4em;
+    padding: 8px;
+  }
 }
 
   </style>
@@ -384,25 +400,36 @@
     <li>🌉 Atravessar a ponte suspensa 516 Arouca (se o coração aguentar!)</li>
     <li>Piquenique com vista para as montanhas🍃</li>
     <li>🛏️ Descansar num alojamento romântico em plena natureza (com piscina😲)</li>
-    <li>🍪 Comer beeeeeeeeeeeeeeeeeeem à brava (</li>
+    <li>🍪 Comer beeeeeeeeeeeeeeeeeeem à brava </li>
 <li>
   Apanhar Pokemons <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Pikachu" style="width: 30px; vertical-align: middle; margin-right: 8px;">
 </li>
   </ul>
 
-  <div class="arouca-slideshow">
-    <button class="prev" onclick="plusAroucaSlides(-1)">⟵</button>
-    <div class="arouca-slide-container">
-      <img class="arouca-slide" src="https://imgur.com/dW8RGIW.jpeg" alt="Passadiços do Paiva">
-      <img class="arouca-slide" src="https://imgur.com/HL0UPsI.jpeg" alt="Ponte 516 Arouca">
-      <img class="arouca-slide" src="https://imgur.com/1lErwst.jpeg" alt="Cidade de Arouca">
-      <img class="arouca-slide" src="https://imgur.com/bYrwzy9.jpeg" alt="Cidade de Arouca">
-    </div>
-    <button class="next" onclick="plusAroucaSlides(1)">⟶</button>
+<div class="arouca-slideshow">
+  <div class="arouca-slide-container">
+    <button class="prev" onclick="plusAroucaSlides(-1)">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+    <path d="M15 6l-6 6 6 6"/>
+  </svg>
+</button>
+
+    <img class="arouca-slide active" src="https://imgur.com/dW8RGIW.jpeg" alt="Passadiços do Paiva" />
+    <img class="arouca-slide" src="https://imgur.com/HL0UPsI.jpeg" alt="Ponte 516 Arouca" />
+    <img class="arouca-slide" src="https://imgur.com/1lErwst.jpeg" alt="Cidade de Arouca" />
+    <img class="arouca-slide" src="https://imgur.com/bYrwzy9.jpeg" alt="Piscina" />
+
+   <button class="next" onclick="plusAroucaSlides(1)">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+    <path d="M9 6l6 6-6 6"/>
+  </svg>
+</button>
+
   </div>
+</div>
 </section>
 
-<section id="letterSection" class="gift-section"
+<section id="letterSection" class="gift-section">
 <section style="padding: 60px 20px; background-color: #fff0f5; text-align: center;">
   <p style="font-family: 'Brush Script MT', cursive; font-size: 2em; color: #880e4f;">
     Obrigado por seres a minha pessoa favorita.<br>
